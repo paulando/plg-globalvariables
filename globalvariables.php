@@ -65,7 +65,7 @@ jimport('joomla.form.helper');
 
 $version = new JVersion;
 
-if (JFactory::getApplication()->isAdmin()) {
+if (JFactory::getApplication()->isClient('administrator')) {
     JFormHelper::addFieldPath(JPATH_PLUGINS . '/content/' . basename(__FILE__, '.php') . '/form/fields');
     JHtml::_('bootstrap.framework');
     JHtml::_('jquery.framework');
@@ -95,11 +95,12 @@ class plgContentGlobalVariables extends JPlugin
      * @param object $subject
      * @param object $params
      */
-    function plgContentGlobalVariables(&$subject, $params)
+    function __construct(&$subject, $params)
     {
         define("GV_SOURCE_DEFAULT", "default_globalvariables_resource");
         define("GV_SOURCE_INTERNAL", "internal_globalvariables_resource");
         define("GV_CACHEPATH", JPATH_CACHE . "/plg_globalvariables");
+
         parent::__construct($subject, $params);
         $this->_plugin = JPluginHelper::getPlugin('content', 'globalvariables');
 
@@ -123,7 +124,7 @@ class plgContentGlobalVariables extends JPlugin
         $this->parameter['replace_variables_debug'] = ($gv_params->get("replace_variables_debug") ? true : false);
         $this->parameter['highlight_variables_debug'] = ($gv_params->get("highlight_variables_debug") ? true : false);
 
-        if (JFactory::getApplication()->isSite()) {
+        if (JFactory::getApplication()->isClient('site')) {
             $this->mountSources();
         }
     }
