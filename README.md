@@ -1,3 +1,10 @@
+## Joomla 4
+
+Backend
+{"varname":["src_phone","front_phone","a_tag_phone","email"],"varvalue":["+1-123-123-1234","(123) 123-1234","<a href=\"tel:+1-123-123-1234\" class=\"clk-phone\">(123) 123-1234</a>","test@test.com"]}
+
+{"sourceactive":["1"],"sourcedefault":["1"],"sourcealias":[""],"variablesource":["0"],"sourceurl":[""],"sourcerevisit":["0"]}
+
 ## Joomla Plugin Global Variables  (plg-globalvariables)
 
 <img src="https://raw.githubusercontent.com/echterhoff/plg-globalvariables/master/assets/icon.png" width="150" align="right">
