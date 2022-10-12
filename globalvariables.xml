@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="4" type="plugin" group="content" method="upgrade">
+<extension version="3.4" type="plugin" group="content" method="upgrade">
     <name>Content - Global Variables</name>
     <author>Lars Echterhoff</author>
     <creationDate>May 2015</creationDate>
@@ -7,7 +7,7 @@
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
     <authorEmail>info@echterhoff.it</authorEmail>
     <authorUrl>www.echterhoff.it</authorUrl>
-    <version>3.4.1.6</version>
+    <version>3.4.1.4</version>
     <description>
 		<![CDATA[
         <p><span style="color:red;font-weight:bold;">In order to properly configure this plugin it is absolutly mandatory to have it activated.</span><br>
@@ -36,49 +36,11 @@
         <fields name="params"
             class="controls controls-row"
         >
-            <!-- <fieldset
-                addfieldpath="/plugin/content/globalvariables/form/fields"
-                name="sources"
-                label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_SOURCE_TAB"
-            >
-                <field
-                    name="note_variable_source2"
-                    type="note"
-                    class="span6"
-                    label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_SOURCE_NOTE_LABEL"
-                    description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_SOURCE_NOTE_DESC"
-                />
-                <field name="direct_variable_input"
-                    type="Repeatable"
-                    icon="pencil"
-                    filter="raw"
-                    maximum="999"
-                    select="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_BUTTON_LABEL"
-                    label="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_TITLE"
-                    description="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_INFO"
-                >
-                    <fields name="params">
-                        <field name="varname"
-                            label="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_VARNAME_LABEL"
-                            description="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_VARNAME_DESC"
-                            size="30"
-                            type="text" 
-                        />
-                        <field name="varvalue"
-                            label="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_VARVALUE_LABEL"
-                            description="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_VARVALUE_DESC"
-                            size="1024"
-                            filter="raw"
-                            type="textarea" 
-                        />
-                    </fields>
-                </field>
-            </fieldset> -->
             <fieldset
                 addfieldpath="/plugin/content/globalvariables/form/fields"
                 name="sources"
-                label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_SOURCE_TAB"
-            >
+                label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_SOURCE_TAB">
+
                 <field
                     name="note_variable_source"
                     type="note"
@@ -86,6 +48,7 @@
                     label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_SOURCE_NOTE_LABEL"
                     description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_SOURCE_NOTE_DESC"
                 />
+
                 <field name="direct_variable_input"
                     type="Repeatable"
                     icon="pencil"
@@ -95,14 +58,21 @@
                     label="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_TITLE"
                     description="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_INFO"
                 >
+
                     <fields name="params">
-                        
+
+                        <fieldset hidden="true"
+                            name="direct_variable_input_modal"
+                            repeat="true"
+                        >
+
                             <field name="varname"
                                 label="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_VARNAME_LABEL"
                                 description="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_VARNAME_DESC"
                                 size="30"
                                 type="text" 
                             />
+
                             <field name="varvalue"
                                 label="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_VARVALUE_LABEL"
                                 description="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_VARVALUE_DESC"
@@ -111,9 +81,12 @@
                                 type="textarea" 
                             />
 
+                        </fieldset>
+
                     </fields>
+
                 </field>
-                <!--default='{"sourcedefault":"0","sourceactive":["0"],"sourcealias":["dropbox"],"sourceurl":["https://dl.dropboxusercontent.com/u/134085/globalvariables/testvariables.txt"]}'-->
+
                 <field name="sourceconfiguration"
                     type="Repeatable"
                     icon="pencil"
@@ -121,33 +94,41 @@
                     select="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_BUTTON_LABEL"
                     label="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_TITLE"
                     description="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_INFO"
-                    default='{"sourceactive":["1"],"sourcedefault":["1"],"sourcealias":[""],"variablesource":["0"],"sourceurl":[""],"sourcerevisit":["0"]}'>
+                    default='{"sourceactive":["1"],"sourcedefault":["1"],"sourcealias":[""],"variablesource":["0"],"sourceurl":[""],"sourcerevisit":["0"]}'
+                >
+
                     <fields name="params">
-                        <!-- <fieldset hidden="true"
+
+                        <fieldset hidden="true"
                             name="sourceconfiguration_modal"
                             repeat="true"
-                        > -->
+                        >
+
                             <field name="sourceactive"
                                 type="checkbox"
                                 value="1"
                                 class="enable-switch"
                                 label="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEACTIVE_LABEL"
                                 description="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEACTIVE_DESC"
-                            ></field>
+                            />
+
                             <field name="sourcedefault"
                                 type="radio"
                                 default="0"
                                 class="selection-hides-sourcealias"
                                 label="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEDEFAULT_LABEL"
-                                description="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEDEFAULT_DESC">
+                                description="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEDEFAULT_DESC"
+                            >
                                 <option value="1"></option>
                             </field>
+
                             <field name="sourcealias"
                                 label="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEALIAS_LABEL"
                                 description="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEALIAS_DESC"
                                 size="30"
                                 type="text" 
                             />
+
                             <field
                                 name="variablesource"
                                 type="sql"
@@ -157,15 +138,18 @@
                                 label="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCETYPE_LABEL"
                                 description="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCETYPE_DESC"
                                 query="SELECT id, title as variablesource FROM #__content WHERE state = 0 or state = 1 ORDER BY title"
-                                key_field="id">
+                                key_field="id"
+                            >
                                 <option value="0">JFIELD_PLG_GLOBALVARIABLES_VARIABLE_SOURCE_DEFAULT_LABEL</option>
                             </field>
+
                             <field name="sourceurl"
                                 label="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEURL_LABEL"
                                 description="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEURL_DESC"
                                 size="1024"
                                 type="text" 
                             />
+
                             <field name="sourcerevisit"
                                 label="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_LABEL"
                                 description="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_DESC"
@@ -191,12 +175,17 @@
                                 <option value="129600">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_3_MONTHS</option>
                                 <option value="259200">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_6_MONTHS</option>
                             </field>
-                        <!-- </fieldset> -->
+
+                        </fieldset>
+
                     </fields>
+
                 </field>
+
             </fieldset>
 
             <fieldset name="variable_setting" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_SETTINGS_TAB">
+
                 <field
                     name="note_variable_source"
                     type="note"
@@ -204,6 +193,7 @@
                     label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_SETTINGS_NOTE_LABEL"
                     description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_SETTINGS_NOTE_DESC"
                 />
+
                 <field
                     name="note_variable_source_style"
                     type="note"
@@ -211,53 +201,60 @@
                     label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_STYLE_LABEL"
                     description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_STYLE_DESC"
                 />
-                <!--                <field name="variable_style_legacy"
-                type="checkbox" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_STYLE_OPTION_LEGACY"
-                description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_STYLE_OPTION_LEGACY_DESC" value="legacy" />-->
+
                 <field name="variable_style_curly" default="1"
-                       type="checkbox" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_STYLE_OPTION_CURLY"
-                       description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_STYLE_OPTION_CURLY_DESC" value="curly" />
-                <!--                <field name="variable_style_varescaped" default="1"
-                type="checkbox" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_STYLE_OPTION_VARESCAPED"
-                description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_STYLE_OPTION_VARESCAPED_DESC" value="varescaped" />-->
+                    type="checkbox" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_STYLE_OPTION_CURLY"
+                    description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_STYLE_OPTION_CURLY_DESC" value="curly" 
+                />
+
                 <field name="variable_style_doublecurly" default="1"
-                       type="checkbox" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_STYLE_OPTION_DOUBLECURLY"
-                       description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_STYLE_OPTION_DOUBLECURLY_DESC" value="doublecurly" />
+                    type="checkbox" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_STYLE_OPTION_DOUBLECURLY"
+                    description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_STYLE_OPTION_DOUBLECURLY_DESC" value="doublecurly" 
+                />
+
                 <field
                     name="note_variable_caching_behavior_headline"
                     type="note"
                     class="span6"
                     label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_CACHING_BEHAVIOR_LABEL"
                 />
+
                 <field name="variable_caching" default="0"
-                       type="checkbox" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_CACHING_OVERRIDE_LABEL"
-                       description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_CACHING_OVERRIDE_DESC" value="1" />
-                
+                    type="checkbox" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_CACHING_OVERRIDE_LABEL"
+                    description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_CACHING_OVERRIDE_DESC" value="1" 
+                />
+
                 <field
                     name="note_variable_replace_behavior_headline"
                     type="note"
                     class="span6"
                     label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_REPLACE_BEHAVIOR_LABEL"
                 />
+
                 <field name="replace_variables_iteration_limit" default="5000"
-                       max="100000"
-                       min="1000"
-                       type="number" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_ITERATION_LIMIT_LABEL"
-                       description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_ITERATION_LIMIT_DESC" />
+                    max="100000"
+                    min="1000"
+                    type="number" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_ITERATION_LIMIT_LABEL"
+                    description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_ITERATION_LIMIT_DESC" 
+                />
+
                 <field name="replace_same_variable_max" default="200"
-                       max="2000"
-                       min="10"
-                       type="number" label="JFIELD_PLG_GLOBALVARIABLES_REPLACE_SAME_VARIABLE_MAX_LABEL"
-                       description="JFIELD_PLG_GLOBALVARIABLES_REPLACE_SAME_VARIABLE_MAX_DESC" />
+                    max="2000"
+                    min="10"
+                    type="number" label="JFIELD_PLG_GLOBALVARIABLES_REPLACE_SAME_VARIABLE_MAX_LABEL"
+                    description="JFIELD_PLG_GLOBALVARIABLES_REPLACE_SAME_VARIABLE_MAX_DESC" 
+                />
 
                 <field
                     name="note_variable_replace_behavior" class="span6 alert alert-error"
                     type="note"
                     description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_REPLACE_BEHAVIOR_DESC"
                 />
+
                 <field name="replace_undefined_variables" default="0"
-                       type="checkbox" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_REPLACE_UNDEFINED_VARIABLES_LABEL"
-                       description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_REPLACE_UNDEFINED_VARIABLES_DESC" value="1" />
+                    type="checkbox" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_REPLACE_UNDEFINED_VARIABLES_LABEL"
+                    description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_REPLACE_UNDEFINED_VARIABLES_DESC" value="1" 
+                />
 
                 <field
                     name="note_variable_replace_debug_headline"
@@ -265,17 +262,21 @@
                     class="span6"
                     label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_REPLACE_DEBUG_HEADLINE"
                 />
+
                 <field name="highlight_variables_debug" default="0"
-                       type="checkbox" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_HIGHLIGHT_DEBUG_LABEL"
-                       description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_HIGHLIGHT_DEBUG_DESC" value="1" />
+                    type="checkbox" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_HIGHLIGHT_DEBUG_LABEL"
+                    description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_HIGHLIGHT_DEBUG_DESC" value="1" 
+                />
+
                 <field name="replace_variables_debug" default="0"
-                       type="checkbox" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_REPLACE_DEBUG_LABEL"
-                       description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_REPLACE_DEBUG_DESC" value="1" />
+                    type="checkbox" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_REPLACE_DEBUG_LABEL"
+                    description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_REPLACE_DEBUG_DESC" value="1" 
+                />
 
             </fieldset>
+
         </fields>
+
     </config>
-    <updateservers>
-        <server type="extension" name="globalvariables" priority="1">https://raw.githubusercontent.com/echterhoff/plg-globalvariables/master/globalvariables_update.xml</server>
-    </updateservers>
+
 </extension>
