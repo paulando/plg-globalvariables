@@ -53,15 +53,17 @@ function generateJson($fields_input) {
 
 window.addEventListener("load", function() {
     const $fields_input = jQuery("#jform_params_direct_variable_input");
-    const fields = JSON.parse($fields_input.val());
-
-    fields.varname.forEach((name,i) => {
-        jQuery(getVarNameId(i)).val(name);
-    });
-
-    fields.varvalue.forEach((value,i) => {
-        jQuery(getVarValueId(i)).val(value);
-    });
+    
+    if ($fields_input.val() !== "") {
+        const fields = JSON.parse($fields_input.val());
+        fields.varname.forEach((name,i) => {
+            jQuery(getVarNameId(i)).val(name);
+        });
+    
+        fields.varvalue.forEach((value,i) => {
+            jQuery(getVarValueId(i)).val(value);
+        });
+    }
 
     jQuery("body").on("click", ".subform-repeatable-container .group-add", function() {
         generateJson($fields_input);
