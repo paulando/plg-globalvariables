@@ -20,7 +20,7 @@ class plgContentGlobalVariablesInstallerScript
      *
      * @param   JAdapterInstance  $adapter  The object responsible for running this script
      */
-    public function __construct(JAdapterInstance $adapter)
+    public function __construct()
     {
 
     }
@@ -33,7 +33,7 @@ class plgContentGlobalVariablesInstallerScript
      *
      * @return  boolean  True on success
      */
-    public function postflight($route, JAdapterInstance $adapter)
+    public function postflight($route)
     {
         // We only need to perform this if the extension is being installed, not updated
         if ($route == 'install') {
@@ -62,7 +62,7 @@ class plgContentGlobalVariablesInstallerScript
      *
      * @param   JAdapterInstance  $adapter  The object responsible for running this script
      */
-    public function uninstall(JAdapterInstance $adapter)
+    public function uninstall()
     {
 
     }
@@ -79,15 +79,15 @@ class plgContentGlobalVariablesInstallerScript
      *
      * @return  boolean  True on success
      */
-    public function preflight($route, JAdapterInstance $adapter)
+    public function preflight($route)
     {
-        $jversion = new JVersion();
+        // $jversion = new JVersion();
 
         // Installing component manifest file version
-        $this->release = $adapter->get("manifest")->version;
+        // $this->release = $adapter->get("manifest")->version;
 
         // Manifest file minimum Joomla version
-        $this->minimum_joomla_release = $adapter->get("manifest")->attributes()->version;
+        // $this->minimum_joomla_release = $adapter->get("manifest")->attributes()->version;
 
         // Show the essential information at the install/update back-end
 //        echo '<p>Installing component manifest file version = ' . $this->release;
@@ -95,27 +95,27 @@ class plgContentGlobalVariablesInstallerScript
 //        echo '<br />Installing component manifest file minimum Joomla version = ' . $this->minimum_joomla_release;
 //        echo '<br />Current Joomla version = ' . $jversion->getShortVersion();
         // abort if the current Joomla release is older
-        if (version_compare($jversion->getShortVersion(), $this->minimum_joomla_release, 'lt')) {
-            Jerror::raiseWarning(null, 'Cannot install Global Variables in a Joomla release prior to ' . $this->minimum_joomla_release);
-            return false;
-        }
+        // if (version_compare($jversion->getShortVersion(), $this->minimum_joomla_release, 'lt')) {
+        //     Jerror::raiseWarning(null, 'Cannot install Global Variables in a Joomla release prior to ' . $this->minimum_joomla_release);
+        //     return false;
+        // }
 
-        // abort if the component being installed is not newer than the currently installed version
-        if ($route == 'update') {
-            $oldRelease = $this->getParam('version');
-            $rel = $oldRelease . ' to ' . $this->release;
-            if (version_compare($this->release, $oldRelease, 'lt')) {
-                Jerror::raiseWarning(null, 'Cannot downgrade from ' . $rel);
-                return false;
-            } elseif (version_compare($this->release, $oldRelease, 'eq')) {
-                Jerror::raiseWarning(null, $this->release . ' is already installed.');
-                return false;
-            }
-        } else {
-            $rel = $this->release;
-        }
+        // // abort if the component being installed is not newer than the currently installed version
+        // if ($route == 'update') {
+        //     $oldRelease = $this->getParam('version');
+        //     $rel = $oldRelease . ' to ' . $this->release;
+        //     if (version_compare($this->release, $oldRelease, 'lt')) {
+        //         Jerror::raiseWarning(null, 'Cannot downgrade from ' . $rel);
+        //         return false;
+        //     } elseif (version_compare($this->release, $oldRelease, 'eq')) {
+        //         Jerror::raiseWarning(null, $this->release . ' is already installed.');
+        //         return false;
+        //     }
+        // } else {
+        //     $rel = $this->release;
+        // }
 
-        echo '<p>' . JText::sprintf('PLG_GLOBALVARIABLES_PREFLIGHT_' . strtoupper($route), $rel, (isset($oldRelease)?$oldRelease:'unknown')) . '</p>';
+        // echo '<p>' . JText::sprintf('PLG_GLOBALVARIABLES_PREFLIGHT_' . strtoupper($route), $rel, (isset($oldRelease)?$oldRelease:'unknown')) . '</p>';
     }
 
     /**
@@ -129,7 +129,7 @@ class plgContentGlobalVariablesInstallerScript
      *
      * @return  boolean  True on success
      */
-    public function install(JAdapterInstance $adapter)
+    public function install()
     {
 //        echo '<p>' . JText::_('COM_DEMOCOMPUPDATE_INSTALL to ' . $this->release) . '</p>';
         // You can have the backend jump directly to the newly installed component configuration page
@@ -147,7 +147,7 @@ class plgContentGlobalVariablesInstallerScript
      *
      * @return  boolean  True on success
      */
-    public function update(JAdapterInstance $adapter)
+    public function update()
     {
 //        echo '<p>' . JText::_('COM_DEMOCOMPUPDATE_UPDATE_ to ' . $this->release) . '</p>';
         // You can have the backend jump directly to the newly updated component configuration page
