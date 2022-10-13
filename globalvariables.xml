@@ -7,7 +7,7 @@
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
     <authorEmail>info@echterhoff.it</authorEmail>
     <authorUrl>www.echterhoff.it</authorUrl>
-    <version>3.4.1.4</version>
+    <version>4.0.0</version>
     <description>
 		<![CDATA[
         <p><span style="color:red;font-weight:bold;">In order to properly configure this plugin it is absolutly mandatory to have it activated.</span><br>
@@ -39,21 +39,13 @@
             <fieldset
                 addfieldpath="/plugin/content/globalvariables/form/fields"
                 name="sources"
-                label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_SOURCE_TAB">
-
-                <field
-                    name="note_variable_source"
-                    type="note"
-                    class="span6"
-                    label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_SOURCE_NOTE_LABEL"
-                    description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_SOURCE_NOTE_DESC"
-                />
+                label="Variables">
 
                 <field
                     name="direct_variable_input"
                     type="text"
                     class="span6"
-                    label="Fields JSON"
+                    label="JSON string"
                     filter="raw"
                 >
                 </field>
@@ -61,7 +53,7 @@
                 <field
                     name="direct_variable_input_dummy"
                     type="subform"
-                    label="Subform Field"
+                    label="Variables"
                     description="Subform Field Description"
                     multiple="true"
                     min="10"
@@ -101,7 +93,7 @@
 
             </fieldset>
 
-            <fieldset name="variable_setting" label="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_SETTINGS_TAB">
+            <fieldset name="variable_setting" label="Settings">
 
                 <field
                     name="note_variable_source"
