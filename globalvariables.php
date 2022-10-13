@@ -228,15 +228,18 @@ class plgContentGlobalVariables extends JPlugin
      */
     private function rotateRepeatableData($json_input_string)
     {
-        $json = json_decode($json_input_string, true);
         $tmp = array();
-        if (is_array($json)) {
-            foreach ($json as $field => $data) {
-                foreach ($data as $row => $value) {
-                    $tmp[$row][$field] = $value;
+        if ($json_input_string !== null) {
+            $json = json_decode($json_input_string, true);
+            if (is_array($json)) {
+                foreach ($json as $field => $data) {
+                    foreach ($data as $row => $value) {
+                        $tmp[$row][$field] = $value;
+                    }
                 }
             }
         }
+
         return $tmp;
     }
 
