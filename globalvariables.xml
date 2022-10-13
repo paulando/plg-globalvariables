@@ -49,138 +49,55 @@
                     description="JFIELD_PLG_GLOBALVARIABLES_VARIABLE_SOURCE_NOTE_DESC"
                 />
 
-                <field name="direct_variable_input"
-                    type="Repeatable"
-                    icon="pencil"
+                <field
+                    name="direct_variable_input"
+                    type="text"
+                    class="span6"
+                    label="Fields JSON"
                     filter="raw"
-                    maximum="999"
-                    select="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_BUTTON_LABEL"
-                    label="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_TITLE"
-                    description="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_INFO"
                 >
+                </field>
 
-                    <fields name="params">
-
-                        <fieldset hidden="true"
-                            name="direct_variable_input_modal"
-                            repeat="true"
-                        >
+                <field
+                    name="direct_variable_input_dummy"
+                    type="subform"
+                    label="Subform Field"
+                    description="Subform Field Description"
+                    multiple="true"
+                    min="10"
+                    max="99"
+                    default='[{"varname":"test", "varvalue":"testval"}]'
+                    layout="joomla.form.field.subform.repeatable-table"
+                >
+                    <form hidden="true" repeat="true">
 
                             <field name="varname"
-                                label="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_VARNAME_LABEL"
-                                description="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_VARNAME_DESC"
-                                size="30"
+                                label="Name"
+                                size="50"
                                 type="text" 
                             />
 
                             <field name="varvalue"
-                                label="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_VARVALUE_LABEL"
-                                description="JFIELD_PLG_GLOBALVARIABLES_DIRECT_VARIABLE_INPUT_VARVALUE_DESC"
+                                label="Value"
                                 size="1024"
                                 filter="raw"
                                 type="textarea" 
+                                cols="50"
                             />
 
-                        </fieldset>
-
-                    </fields>
-
+                    </form>
                 </field>
 
-                <field name="sourceconfiguration"
-                    type="Repeatable"
-                    icon="pencil"
-                    maximum="999"
-                    select="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_BUTTON_LABEL"
-                    label="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_TITLE"
-                    description="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_INFO"
-                    default='{"sourceactive":["1"],"sourcedefault":["1"],"sourcealias":[""],"variablesource":["0"],"sourceurl":[""],"sourcerevisit":["0"]}'
+                <!-- <field
+                    name="direct_variable_input"
+                    type="subform"
+                    label="Subform Field"
+                    description="Subform Field Description"
+                    multiple="true"
+                    min="1"
+                    max="99"
                 >
-
-                    <fields name="params">
-
-                        <fieldset hidden="true"
-                            name="sourceconfiguration_modal"
-                            repeat="true"
-                        >
-
-                            <field name="sourceactive"
-                                type="checkbox"
-                                value="1"
-                                class="enable-switch"
-                                label="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEACTIVE_LABEL"
-                                description="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEACTIVE_DESC"
-                            />
-
-                            <field name="sourcedefault"
-                                type="radio"
-                                default="0"
-                                class="selection-hides-sourcealias"
-                                label="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEDEFAULT_LABEL"
-                                description="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEDEFAULT_DESC"
-                            >
-                                <option value="1"></option>
-                            </field>
-
-                            <field name="sourcealias"
-                                label="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEALIAS_LABEL"
-                                description="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEALIAS_DESC"
-                                size="30"
-                                type="text" 
-                            />
-
-                            <field
-                                name="variablesource"
-                                type="sql"
-                                width="200"
-                                default="0"
-                                class="selection-hides-sourceurl selection-hides-sourcerevisit"
-                                label="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCETYPE_LABEL"
-                                description="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCETYPE_DESC"
-                                query="SELECT id, title as variablesource FROM #__content WHERE state = 0 or state = 1 ORDER BY title"
-                                key_field="id"
-                            >
-                                <option value="0">JFIELD_PLG_GLOBALVARIABLES_VARIABLE_SOURCE_DEFAULT_LABEL</option>
-                            </field>
-
-                            <field name="sourceurl"
-                                label="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEURL_LABEL"
-                                description="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEURL_DESC"
-                                size="1024"
-                                type="text" 
-                            />
-
-                            <field name="sourcerevisit"
-                                label="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_LABEL"
-                                description="JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_DESC"
-                                type="list"
-                            >
-                                <option value="0">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_TIME</option>
-                                <option value="1">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_1_MINUTES</option>
-                                <option value="5">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_5_MINUTES</option>
-                                <option value="10">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_10_MINUTES</option>
-                                <option value="15">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_15_MINUTES</option>
-                                <option value="30">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_30_MINUTES</option>
-                                <option value="60">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_60_MINUTES</option>
-                                <option value="120">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_120_MINUTES</option>
-                                <option value="240">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_240_MINUTES</option>
-                                <option value="360">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_6_HOURS</option>
-                                <option value="720">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_12_HOURS</option>
-                                <option value="1440">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_24_HOURS</option>
-                                <option value="4320">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_3_DAYS</option>
-                                <option value="7200">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_5_DAYS</option>
-                                <option value="10080">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_7_DAYS</option>
-                                <option value="20160">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_14_DAYS</option>
-                                <option value="43200">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_30_DAYS</option>
-                                <option value="129600">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_3_MONTHS</option>
-                                <option value="259200">JFIELD_PLG_GLOBALVARIABLES_SOURCECONFIGURATION_SOURCEREVISIT_EVERY_6_MONTHS</option>
-                            </field>
-
-                        </fieldset>
-
-                    </fields>
-
-                </field>
+                </field> -->
 
             </fieldset>
 
